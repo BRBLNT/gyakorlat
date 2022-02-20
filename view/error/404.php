@@ -1,0 +1,1 @@
+<div class="alert alert-danger">A keresett oldal nem található</div>
