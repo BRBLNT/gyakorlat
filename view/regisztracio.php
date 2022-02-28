@@ -1,4 +1,14 @@
-<form action="" method="post">
+<form action="controllers/regisztracio.php" method="post">
+
+	 
+	<?php if(isset($_SESSION['hiba'])): //blokkositas : - os   /* <?php echo $_SESSION['hiba'] print $_SESSION['hiba'] */?>
+
+		<div class='alert alert-danger'>
+			
+			<?=$_SESSION['hiba']?>
+		</div> 
+
+	<?php endif ?>
 
 	<!-- 
 		Vezetéknév - text
@@ -67,7 +77,7 @@
 			<textarea name="leiras" class="form-control" placeholder="Leírás"></textarea>
 	 </div>
 	 <div class="form-group">
-		 	<label for="">GDPR</label>
+		 	<label for="">GDPR*</label>
 			<input type="checkbox" class="form-control" name="GDPR" value="1">
 	 </div>
 	 
@@ -76,3 +86,7 @@
 	 </div>
 	 
 </form>
+
+<script>
+	
+</script>

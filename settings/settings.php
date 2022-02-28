@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     $host = 'localhost';
     $user = 'php2022';
     $pass = 'sXVBGOdPUQE5QigL';
@@ -6,5 +7,6 @@
 
     //mysql kapcsolat hívás (obj)
 
-    $mysql = new mysqli($host, $user, $pass, $db) or die('SQL szerver hiba');
+    $mysql = new mysqli($host, $user, $pass, $db) 
+    // nincs szerepe mivel objektum -  or die('SQL szerver hiba');
 ?>

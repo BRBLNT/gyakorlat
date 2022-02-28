@@ -65,9 +65,7 @@
                 include('view/fooldal.php');
             }
 
-
             
-        
 
             ?>
         </div>
