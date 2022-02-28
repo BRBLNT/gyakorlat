@@ -1,14 +1,20 @@
-<form action="controllers/regisztracio.php" method="post">
+<form id="regisztraciosform">
+
+	<div id='uzenet'></div>
+
+	<!--
+		 action="controllers/regisztracio.php" method="post" id miatt nem szükséges
+	-->
 
 	 
-	<?php if(isset($_SESSION['hiba'])): //blokkositas : - os   /* <?php echo $_SESSION['hiba'] print $_SESSION['hiba'] */?>
+	<!-- // if(isset($_SESSION['hiba'])): //blokkositas : - os   /*  echo $_SESSION['hiba'] print $_SESSION['hiba'] */
 
 		<div class='alert alert-danger'>
 			
-			<?=$_SESSION['hiba']?>
+			=$_SESSION['hiba']
 		</div> 
-
-	<?php endif ?>
+	-->
+	
 
 	<!-- 
 		Vezetéknév - text
@@ -86,7 +92,21 @@
 	 </div>
 	 
 </form>
-
+<!--Asszinkron működés-->
 <script>
-	
+	$(function(){
+		$('#regisztraciosform').submit(function(event){
+			$.ajax({
+				'url': 'controllers/regisztracio.php',
+				'method': 'post',
+				'dataType': 'JSON',
+        		'data': $('#regisztraciosform').serialize()
+			}).done(function(adat){
+				console.log(adat);
+				$('#uzenet').text(adat.hiba);
+				$('#uzenet').addClass('alert alert-danger');
+			})
+			event.preventDefault();
+		});
+	});
 </script>

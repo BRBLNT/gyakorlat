@@ -13,8 +13,8 @@ if(isset($_POST['vezeteknev']))
         !isset($_POST['GDPR'])
     )
     {
-        $_SESSION['hiba'] = "Kötelező mezők!";
-        header('location: '.$_SERVER['HTTP_REFERER'] );
+        //$_SESSION['hiba'] = "Kötelező mezők!";
+        //header('location: '.$_SERVER['HTTP_REFERER'] );
 
 
         /* - teszt sor
@@ -23,8 +23,10 @@ if(isset($_POST['vezeteknev']))
         print_r($_SERVER);
         print_r($_POST);
         print "</pre>";
-        return false;
+        
         */
+        print json_encode(['hiba'=> "Kötelező mezők!"]);
+        return false;
     }
 }
 
