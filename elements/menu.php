@@ -7,7 +7,7 @@
     <div class="navbar-nav">
       <a class="nav-link active" href="?oldal=fooldal">Főoldal <span class="sr-only">(current)</span></a>
       <a class="nav-link" href="?oldal=regisztracio">Regisztracio</a>
-      <a class="nav-link" href="#">Pricing</a>
+      <a class="nav-link" href="?oldal=belepes">Belepes</a>
       <a class="nav-link disabled">Disabled</a>
     </div>
   </div>

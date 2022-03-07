@@ -25,9 +25,42 @@ if(isset($_POST['vezeteknev']))
         print "</pre>";
         
         */
-        print json_encode(['hiba'=> "Kötelező mezők!"]);
+        print json_encode(['uzenet'=>'Kötelező mezők!', 'class'=>'alert alert-danger']);
         return false;
     }
+    /**
+     * Biztonsági szűrés 
+     * sql injekció - [mysqli:]real_escape_string: az '=> \', "=>\"
+     * xss támadás - htmlspecialchars (html entities ) < => &lt > => &gt 
+     * foreach($tomb as [$index=>]$érték)
+     * dinamikus változó létrehozás $$
+     */
+
+     //hirlevel 
+     $hirlevel = 0;
+     foreach($_POST as $index=>$érték)
+     {
+        $$index = htmlspecialchars($mysql->real_escape_string($érték));
+     }
+     //jelszavak ellenorzése
+     if($jelszo != $jelszo_ujra)
+     {
+        print json_encode(['uzenet'=>'Jelszavak nem egyeznek meg!', 'class'=>'alert alert-danger']);
+        return false;
+     }
+     //jelszo hash
+     $jelszo = hash('sha256',$jelszo.$zaj);
+
+     //sql insert 
+
+     $sql = "INSERT INTO felhasznalok(vezeteknev, keresztnev, email, jelszo, szuletesi_ido, neme, legmagasabb_iskola, hirlevel, leiras) VALUES ('{$vezeteknev}','{$keresztnev}','{$email}','{$jelszo}','{$szuletesi_ido}','{$neme}','{$legmagasabb_iskola}','{$hirlevel}','{$leiras}')";
+
+     if($mysql->query($sql))
+     {
+        print json_encode(['uzenet'=>'Sikeres regisztracio!', 'class'=>'alert alert-success', 'success'=>true]);
+        return false;
+     }
+     print $mysql->error; 
 }
 
 

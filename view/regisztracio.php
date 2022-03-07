@@ -103,8 +103,14 @@
         		'data': $('#regisztraciosform').serialize()
 			}).done(function(adat){
 				console.log(adat);
-				$('#uzenet').text(adat.hiba);
-				$('#uzenet').addClass('alert alert-danger');
+				$('#uzenet').removeClass();
+				$('#uzenet').text(adat.uzenet);
+				$('#uzenet').addClass(adat.class);
+
+				if(adat.hasOwnProperty('success'))
+				{
+					$('#regisztraciosform').remove();
+				}
 			})
 			event.preventDefault();
 		});

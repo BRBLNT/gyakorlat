@@ -7,6 +7,9 @@
 
     //mysql kapcsolat hívás (obj)
 
-    $mysql = new mysqli($host, $user, $pass, $db) 
+    $mysql = new mysqli($host, $user, $pass, $db);
     // nincs szerepe mivel objektum -  or die('SQL szerver hiba');
+
+    //jelszo só, zaj
+    $zaj = 'jimmyakiraly';
 ?>
