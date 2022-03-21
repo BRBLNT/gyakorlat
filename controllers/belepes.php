@@ -38,9 +38,12 @@
         if($select->num_rows)
         {
             $_SESSION['felhasznalo'] = $select->fetch_assoc();
-            print "<pre>";
-            print_r($_SESSION['felhasznalo']);
-            print "</pre>";
+            //print "<pre>";
+            //print_r($_SESSION['felhasznalo']);
+            //print "</pre>";
+            $_SESSION['uzenet'] = "Sikeres belépés!";
+            header('location: /gyakorlat ');
+            return false;
         }
         else
         {

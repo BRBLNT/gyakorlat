@@ -82,6 +82,14 @@
             <?php
             unset($_SESSION['hiba']);
             endif;
+            if(isset($_SESSION['uzenet'])):
+              ?>
+              <div class="alert alert-success">
+                <?=$_SESSION['uzenet']?>
+              </div>
+            <?php
+            unset($_SESSION['uzenet']);
+            endif;
             if(isset($_GET['oldal']))
             {
                 //forrás állomány létezik-e

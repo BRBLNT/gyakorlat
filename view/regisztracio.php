@@ -1,3 +1,9 @@
+<?php if(isset($_SESSION['felhasznalo'])):?>
+	<div class='alert alert-info'>Már belépett</div>
+<?php 
+return;
+endif;
+?>
 <form id="regisztraciosform">
 
 	<div id='uzenet'></div>

@@ -12,4 +12,9 @@
 
     //jelszo só, zaj
     $zaj = 'jimmyakiraly';
+
+    if(isset($_GET['kilepes']))
+    {
+        unset($_SESSION['felhasznalo']);
+    }
 ?>
