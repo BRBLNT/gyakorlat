@@ -74,8 +74,14 @@
              * isset - boolean
              * 
              */
-               
-
+            if(isset($_SESSION['hiba'])):
+            ?>
+              <div class="alert alert-danger">
+                <?=$_SESSION['hiba']?>
+              </div>
+            <?php
+            unset($_SESSION['hiba']);
+            endif;
             if(isset($_GET['oldal']))
             {
                 //forrás állomány létezik-e
@@ -103,4 +109,9 @@
         </div>
     </main>
 </body>
+<!--repo: https://github.com/BRBLNT/gyakorlat-->
 </html>
+
+
+
+
