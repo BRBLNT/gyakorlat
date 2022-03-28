@@ -38,12 +38,27 @@
         if($select->num_rows)
         {
             $_SESSION['felhasznalo'] = $select->fetch_assoc();
+
+
+            //emlekezzram funkcio
+            if(isset($_POST['emlekezzram']))
+            {
+                $rememeber_token = hash('sha256',uniqid());
+
+                $sql = "UPDATE felhasznalok SET remeber_token = {$rememeber_token} WHERE id = {$_SESSION['felhasznalo']['id']}";
+
+                if($mysql->query($sql))
+                {
+                    //cookie süti létrehozása
+                    //setcookie('suti neve','suti tartalma','lejarati ido', 'eleresi utvonal');
+                }
+            }
             //print "<pre>";
             //print_r($_SESSION['felhasznalo']);
             //print "</pre>";
             $_SESSION['uzenet'] = "Sikeres belépés!";
             header('location: /gyakorlat ');
-            return false;
+            return true;
         }
         else
         {
