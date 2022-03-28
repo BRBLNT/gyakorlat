@@ -45,12 +45,15 @@
             {
                 $rememeber_token = hash('sha256',uniqid());
 
-                $sql = "UPDATE felhasznalok SET remeber_token = {$rememeber_token} WHERE id = {$_SESSION['felhasznalo']['id']}";
+                $sql = "UPDATE felhasznalok SET remember_token = '{$rememeber_token}' WHERE id = '{$_SESSION['felhasznalo']['id']}'";
+
+                
 
                 if($mysql->query($sql))
                 {
                     //cookie süti létrehozása
                     //setcookie('suti neve','suti tartalma','lejarati ido', 'eleresi utvonal');
+                    setcookie('remember', $rememeber_token, time()+$session_time, '/');
                 }
             }
             //print "<pre>";

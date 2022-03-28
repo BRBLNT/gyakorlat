@@ -15,10 +15,11 @@
       <?php else: ?>
 
         <a class="nav-link" href="?kilepes">Kilépés</a>
+        <a class="nav-link" href="?oldal=felhasznalolista">Felhasználók</a>
         
       <?php endif; ?>
         
-      <a class="nav-link disabled">Disabled</a>
+      
     </div>
   </div>
 </nav>
