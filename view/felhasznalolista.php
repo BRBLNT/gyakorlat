@@ -3,6 +3,19 @@
 <?php 
 return;
 endif;
+
+    //felhasznaló törlése
+    if(
+        isset($_GET['torles']) &&
+        is_numeric($_GET['torles'])
+        
+        )
+    {
+
+        $sql = "DELETE FROM felhasznalok WHERE id='{$_GET['torles']}'";
+        $mysql->query($sql);
+    }
+
     $sql = "SELECT * FROM felhasznalok";
     $select = $mysql->query($sql);
 ?>
@@ -36,7 +49,12 @@ endif;
                 <td> <?=$adatok['hirlevel'] ? "igen" : "nem"?> </td>
                 <td> <?=$adatok['leiras']?> </td>
                 <td>
-                    <a href="">
+                    <a href="#" class="btn btn-primary w-100 mb-2">Frissités</a>
+                    <a href="?oldal=felhasznalolista&torles=<?=$adatok['id']?>" 
+                    
+                    onclick="return confirm('Biztosan törli a felhasználót: <?=$adatok['vezeteknev']?> <?=$adatok['keresztnev']?>')"
+                    
+                    class="btn btn-danger w-100">Törlés</a>
                 </th>
             </tr>
             <?php endwhile?>
