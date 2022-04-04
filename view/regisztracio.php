@@ -4,9 +4,10 @@
 return;
 endif;
 ?>
+<div id='uzenet'></div>
 <form id="regisztraciosform">
 
-	<div id='uzenet'></div>
+	
 
 	<!--
 		 action="controllers/regisztracio.php" method="post" id miatt nem szükséges

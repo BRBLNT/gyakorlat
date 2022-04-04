@@ -22,7 +22,7 @@ endif;
 <div class="card mt-3">
     <div class="card-header">Felhasznalok</div>
     <div class="card-body">
-        <table class="table">
+    <table class="table datatable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -49,16 +49,17 @@ endif;
                 <td> <?=$adatok['hirlevel'] ? "igen" : "nem"?> </td>
                 <td> <?=$adatok['leiras']?> </td>
                 <td>
-                    <a href="#" class="btn btn-primary w-100 mb-2">Frissités</a>
+                    <a href="?oldal=felhasznalofrissites&id=<?=$adatok['id']?>" class="btn btn-primary w-100 mb-2">Frissités</a>
                     <a href="?oldal=felhasznalolista&torles=<?=$adatok['id']?>" 
                     
                     onclick="return confirm('Biztosan törli a felhasználót: <?=$adatok['vezeteknev']?> <?=$adatok['keresztnev']?>')"
                     
                     class="btn btn-danger w-100">Törlés</a>
-                </th>
+                </td>
             </tr>
             <?php endwhile?>
+            
         </tbody>
     </table>
-    </div>
+    </div>  
 </div>
