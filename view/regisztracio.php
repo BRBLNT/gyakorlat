@@ -93,7 +93,20 @@ endif;
 		 	<label for="">GDPR*</label>
 			<input type="checkbox" class="form-control" name="GDPR" value="1">
 	 </div>
-	 
+
+	 <div class="input-group mb-3">
+  	 <div class="input-group-prepend">
+    	<span class="input-group-text" id="inputGroupFileAddon01">Profilkép</span>
+  	 </div>
+  		<div class="custom-file">
+    		<input name="avatar" type="file" accept="image/*" onchange="loadFile(event)" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+    		<label class="custom-file-label" for="inputGroupFile01">Kép kiválasztása</label>
+  		</div>
+	</div>
+
+	<img id="output" class="img-fluid d-sm-flex">
+	
+	<br>
 	 <div class="form-group">
 		 <button type="submit" class="btn btn-primary">Mentés</button>
 	 </div>
@@ -103,11 +116,15 @@ endif;
 <script>
 	$(function(){
 		$('#regisztraciosform').submit(function(event){
+			var thisform = this;
 			$.ajax({
 				'url': 'controllers/regisztracio.php',
 				'method': 'post',
 				'dataType': 'JSON',
-        		'data': $('#regisztraciosform').serialize()
+				contentType: false, 
+				processData: false,
+        		//'data': $('#regisztraciosform').serialize()
+				data: new FormData(thisform)
 			}).done(function(adat){
 				console.log(adat);
 				$('#uzenet').removeClass();
@@ -122,4 +139,13 @@ endif;
 			event.preventDefault();
 		});
 	});
+</script>
+<script>
+	var loadFile = function(event) {
+    	var output = document.getElementById('output');
+    	output.src = URL.createObjectURL(event.target.files[0]);
+    	output.onload = function() {
+      		URL.revokeObjectURL(output.src) 
+    	}
+  	};
 </script>

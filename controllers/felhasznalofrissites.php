@@ -26,10 +26,10 @@ if(isset($_POST['vezeteknev']))
      //jelszavak ellenorzése
 
      //jelszó mentes sql
-     $sql = "UPDATE felhasznalok SET vezeteknev = '{$vezeteknev}', keresztnev ='{$keresztnev}', email = '{$email}', szuletesi_ido = '{$szuletesi_ido}', neme = '{$neme}', legmagasabb_iskola = '{$legmagasabb_iskola}', hirlevel = '{$hirlevel}', leiras = '{$leiras}' WHERE id = '{$_POST['felhasznalo_id']}'";
+     $sql = "UPDATE felhasznalok SET vezeteknev = '{$vezeteknev}', keresztnev ='{$keresztnev}', email = '{$email}', szuletesi_ido = '{$szuletesi_ido}', neme = '{$neme}', legmagasabb_iskola = '{$legmagasabb_iskola}', hirlevel = '{$hirlevel}', leiras = '{$leiras}' WHERE id = '{$felhasznalo_id}'";
 
 
-     if(!empty($_POST['jelszo']) || !empty($_POST['jelszo_ujra'])) {
+     if(!empty($jelszo) || !empty($jelszo_ujra)) {
 
         if($jelszo != $jelszo_ujra)
         {
@@ -39,7 +39,7 @@ if(isset($_POST['vezeteknev']))
         //jelszo hash
         $jelszo = hash('sha256',$jelszo.$zaj);
 
-        $sql = "UPDATE felhasznalok SET vezeteknev = '{$vezeteknev}', keresztnev ='{$keresztnev}', email = '{$email}', jelszo = '{$jelszo}', szuletesi_ido = '{$szuletesi_ido}', neme = '{$neme}', legmagasabb_iskola = '{$legmagasabb_iskola}', hirlevel = '{$hirlevel}', leiras = '{$leiras}' WHERE id = '{$_POST['felhasznalo_id']}'";
+        $sql = "UPDATE felhasznalok SET vezeteknev = '{$vezeteknev}', keresztnev ='{$keresztnev}', email = '{$email}', jelszo = '{$jelszo}', szuletesi_ido = '{$szuletesi_ido}', neme = '{$neme}', legmagasabb_iskola = '{$legmagasabb_iskola}', hirlevel = '{$hirlevel}', leiras = '{$leiras}' WHERE id = '{$felhasznalo_id}'";
      } 
 
      //sql update  2 sql szkrip jelszo és jelszó nelkül

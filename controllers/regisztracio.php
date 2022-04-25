@@ -3,6 +3,16 @@
 if(isset($_POST['vezeteknev']))
 {
     require_once('../settings/settings.php');
+
+   /*
+   print "<p>";
+   print_r($_FILES);
+   print "</p>";
+   print "<p>";
+   print_r($_POST);
+   print "</p>";
+   return; */
+
     $vezeteknev = $_POST['vezeteknev'];
 
     if(
@@ -58,6 +68,28 @@ if(isset($_POST['vezeteknev']))
      if($mysql->query($sql))
      {
         print json_encode(['uzenet'=>'Sikeres regisztracio!', 'class'=>'alert alert-success', 'success'=>true]);
+
+        //$mysql->last_insert;
+        $last_id = $mysql->insert_id;
+
+        if(isset($_FILES['avatar']))
+        {
+           if(!file_exists('../images/'.$last_id))
+           {
+            mkdir('../images/'.$last_id);
+           }
+           move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/'.$last_id.'/'.$_FILES['avatar']['name']);
+
+           $sql = "UPDATE felhasznalok SET avatar = '{$_FILES['avatar']['name']}' WHERE id = '{$last_id}'";
+           if($mysql->query($sql))
+           {
+              return false;
+           }
+           print $mysql->error;
+        }
+        
+        
+
         return false;
      }
      print $mysql->error; 
