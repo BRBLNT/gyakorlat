@@ -2,6 +2,7 @@
 
 if(isset($_POST['vezeteknev']))
 {
+
     require_once('../settings/settings.php');
     $vezeteknev = $_POST['vezeteknev'];
 
@@ -25,7 +26,7 @@ if(isset($_POST['vezeteknev']))
      //jelszavak ellenorzése
 
      //jelszó mentes sql
-     $sql = "";
+     $sql = "UPDATE felhasznalok SET vezeteknev = '{$vezeteknev}', keresztnev ='{$keresztnev}', email = '{$email}', szuletesi_ido = '{$szuletesi_ido}', neme = '{$neme}', legmagasabb_iskola = '{$legmagasabb_iskola}', hirlevel = '{$hirlevel}', leiras = '{$leiras}' WHERE id = '{$_POST['felhasznalo_id']}'";
 
 
      if(!empty($_POST['jelszo']) || !empty($_POST['jelszo_ujra'])) {
@@ -38,14 +39,10 @@ if(isset($_POST['vezeteknev']))
         //jelszo hash
         $jelszo = hash('sha256',$jelszo.$zaj);
 
-        $sql = "";
-     }
-
-        
-
+        $sql = "UPDATE felhasznalok SET vezeteknev = '{$vezeteknev}', keresztnev ='{$keresztnev}', email = '{$email}', jelszo = '{$jelszo}', szuletesi_ido = '{$szuletesi_ido}', neme = '{$neme}', legmagasabb_iskola = '{$legmagasabb_iskola}', hirlevel = '{$hirlevel}', leiras = '{$leiras}' WHERE id = '{$_POST['felhasznalo_id']}'";
+     } 
 
      //sql update  2 sql szkrip jelszo és jelszó nelkül
-
      if($mysql->query($sql))
      {
         print json_encode(['uzenet'=>'Sikeres frissités!', 'class'=>'alert alert-success', 'success'=>true]);
