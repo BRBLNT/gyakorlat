@@ -16,6 +16,7 @@
 
         <a class="nav-link" href="?kilepes">Kilépés</a>
         <a class="nav-link" href="?oldal=felhasznalolista">Felhasználók</a>
+        <a class="nav-link" href="?oldal=galeriacreate">Galéria létrehozása</a>
         
       <?php endif; ?>
         

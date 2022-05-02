@@ -101,6 +101,9 @@
             <?php
             unset($_SESSION['uzenet']);
             endif;
+            ?>
+            <div id="ajax-uzenet"></div>
+            <?php
             if(isset($_GET['oldal']))
             {
                 //forrás állomány létezik-e
